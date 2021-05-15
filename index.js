@@ -41,6 +41,16 @@ const questions = [ {
     name: 'license',
     choices: ["GPL_3.0", "BSD", "none"]
   },
+  {
+    type: 'input',
+    message: 'What is your GitHub username?',
+    name: 'github',
+  },
+  {
+    type: 'input',
+    message: 'What is your email address?',
+    name: 'email',
+  },
 ];
 
 
@@ -50,7 +60,15 @@ function writeToFile(fileName, data) {
   fs.writeFile(fileName, data, err=>{
       if(err)throw err
       console.log("It worked!")
-  })  
+  });
+  
+  fs.open('README.md', 'w+', function (err, f) {
+    if (err) {
+       return console.error(err);
+    }
+    console.log(f);
+    console.log("File opened!!");     
+ });
 }
 
 // TODO: Create a function to initialize app
